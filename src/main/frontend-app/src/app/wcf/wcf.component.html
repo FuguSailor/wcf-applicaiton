@@ -1,0 +1,37 @@
+<h2>WCF Application</h2>
+<ul class="wcf-feature-list">
+    <li class="wcf-feature" *ngFor="let feature of features; index as i" id="featureItem{{i}}">
+      <div>
+        <span>Feature:&nbsp;{{i+1}}</span>
+        <span class="wcf-title">{{feature.title}}</span>
+        <span class="wcf-description">{{feature.description}}</span>
+        <span class="wcf-client">{{feature.client}}</span>
+        <span class="wcf-priority">{{feature.priority}}</span>
+        <span class="wcf-target-date">{{feature.targetDate}}</span>
+        <span class="wcf-area">{{feature.area}}</span>
+        <button (click)="onEdit(i)" id="feature{{i}}">Edit</button>
+        <button (click)="onDelete(i)">Delete</button>
+      </div>
+      <div class="wcf-feature-record" data-id="editFeature{{i}}" hidden>
+        <input class="wcf-title-update" value="{{feature.title}}" name="title"/>
+        <input class="wcf-description-update" value="{{feature.description}}" name="description"/>
+        <input class="wcf-client-update" value="{{feature.client}}" name="client"/>
+        <input class="wcf-priority-update" value="{{feature.priority}}" type="number" name="priority"/>
+        <input class="wcf-target-date-update" value="{{feature.targetDate}}" name="targetDate"/>
+        <input class="wcf-area-update" value="{{feature.area}}" name="area"/>
+        <button (click)="onSaveEdit(i);">Save</button>
+        <button (click)="onCancel(i)" aria-label="cancel the edit">Cancel</button>
+      </div>
+    </li>
+  <button (click)="addFeature()">Add Feature Request</button>
+  <li class="wcf-add-feature" hidden>
+    <input class="wcf-title-new" name="title" placeholder="I would like..."/>
+    <input class="wcf-description-new" name="description" placeholder="As a user I would like the ability to..."/>
+    <input class="wcf-client-new" name="client" placeholder="Client X"/>
+    <input class="wcf-priority-new" placeholder="{{featureCount()+1}}" type="number" name="priority" min="0"/>
+    <input class="wcf-target-date-new" name="targetDate" placeholder="12/25/2021"/>
+    <input class="wcf-area-new" name="area" placeholder="Sales"/>
+    <button (click)="onSaveNew();">Save</button>
+    <button (click)="onCancelNew()" aria-label="cancel the edit">Cancel</button>
+  </li>
+  </ul>
