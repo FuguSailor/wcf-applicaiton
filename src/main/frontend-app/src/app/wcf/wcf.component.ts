@@ -81,7 +81,11 @@ export class WcfComponent implements OnInit {
     newFeature.priority = children[3].value;
     newFeature.targetDate = children[4].value;
     newFeature.area = children[5].value;
-    this.features.add(newFeature);
+    this.features.push(newFeature);
+    // clear the values
+    for( var i = 0; i < children.length; i++){
+        children[i].value = '';
+    }
     console.log('WcfComponent.onSaveNew()');
   }
 
